@@ -1,0 +1,71 @@
+# Conveyor Control System — Functional Test Results
+
+## 1. Project Information
+
+| Item | Description |
+|---|---|
+| Project | Automated Conveyor Belt Control System |
+| PLC | Siemens SIMATIC S7-1200 |
+| Engineering Software | TIA Portal V17 |
+| Simulation Software | S7-PLCSIM V17 |
+| Programming Language | Ladder Diagram (LAD) |
+| Test Type | Functional Verification |
+| Test Environment | PLC Simulation |
+| Overall Status | PASS — All five reported tests passed |
+
+## 2. Test Objectives
+
+The purpose of these tests was to verify the fundamental operating functions of the conveyor control program under simulated conditions.
+
+The validation covered normal stopping, simulated fault response, individual product counting, automatic cycle completion, and counter reset.
+
+## 3. Test Results
+
+| Test ID | Test Description | Expected Result | Reported Result | Status |
+|---|---|---|---|---|
+| TC-01 | Normal Stop | Motor command and output turn OFF when the stop condition is activated. | Expected stopping behavior observed. | PASS |
+| TC-02 | Simulated Fault | Motor command and output turn OFF when a simulated fault is activated. | Expected fault response observed. | PASS |
+| TC-03 | Individual Product Counting | Each valid rising edge from the product sensor increments the counter by one. | Individual product counting verified. | PASS |
+| TC-04 | Automatic Cycle Completion | The conveyor stops when the product counter reaches the preset value of five. | Cycle completion behavior observed. | PASS |
+| TC-05 | Counter Reset | The product counter returns to zero when the reset command is activated. | Counter reset verified. | PASS |
+
+## 4. Functional Verification Summary
+
+All five reported functional tests passed in the S7-PLCSIM simulation environment.
+
+The reported results support the following conclusions:
+
+- The normal stop condition disables the conveyor motor command.
+- The simulated fault condition disables the conveyor motor command.
+- Product counting uses individual sensor detections rather than continuously counting a sustained sensor signal.
+- The automatic cycle terminates when the preset production quantity is reached.
+- The counter can be reset for a subsequent test cycle.
+
+## 5. Test Limitations
+
+These results apply to the simulated PLC program and the tested operating conditions.
+
+The tests do not establish the performance of a physical conveyor, motor starter, field wiring, real sensors, or safety-related hardware. Further validation would be required before deployment in an industrial installation.
+
+## 6. Recommended Next Tests
+
+The following tests are recommended to improve the completeness of the validation:
+
+- Verify that the motor cannot restart unexpectedly after a stop or fault condition is cleared.
+- Verify that a new automatic cycle requires a deliberate start command.
+- Verify that manual and automatic modes cannot command the motor simultaneously.
+- Verify that reset behavior is correct when a fault is active.
+- Verify sensor behavior during rapid transitions and prolonged activation.
+- Verify startup behavior and counter initialization after a PLC restart.
+
+## 7. Conclusion
+
+The conveyor control program completed all five reported functional tests in simulation.
+
+This project demonstrates practical experience with Siemens PLC programming, Ladder Logic, digital input/output handling, edge detection, counter instructions, operating conditions, fault response, and functional test documentation.
+
+**Project status:** Functional simulation tests completed. Additional robustness testing and technical documentation are recommended before considering the design complete.
+
+---
+
+*Document maintained as part of an industrial automation and controls engineering portfolio.*
